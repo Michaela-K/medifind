@@ -15,6 +15,8 @@ const Navbar = () => {
         <li className='p-4'>Home</li>
         <li className='p-4'>About</li>
         <li className='p-4'>Doctors</li>
+        <li className='p-4'><a href="/jobsList">Jobs</a></li>
+        <li className='p-4'><a href="/newjob">NewJob</a></li>
         <p className='flex w-16 justify-center'> | </p>
         <button className='bg-transparent hover:bg-[#9098DB] hover:text-white py-2 px-4 mr-2 border border-[#5b588a] hover:border-transparent rounded'>Register</button>
         <button className='bg-[#7B84D3] hover:bg-[#9098DB] text-white py-2.5 px-4 border-[#24233E] hover:border-transparent rounded'> LogIn </button>
