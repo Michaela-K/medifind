@@ -22,14 +22,10 @@ app.use(cookieSession({
 
 
 //database import from db.js
-const {pool} = require("../lib/db");
+const {pool} = require("./lib/db");
 
 app.listen(4000)
 console.log("server on port 4000")
-
-
-const jobsRouter = require('./routes/jobs');
-app.use('/jobs', jobsRouter(pool));
 
 
 //API ROUTE HANDLERS
