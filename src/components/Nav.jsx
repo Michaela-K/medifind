@@ -12,7 +12,7 @@ const Navbar = () => {
     <div className='flex justify-between items-center h-24 mx-auto px-20 text-black bg-[#ADDDEE] drop-shadow-md'>
       <h1 className='w-full text-3xl font-bold text-[#24233E]'>MediFind</h1>
       <ul className='hidden md:flex items-center'>
-        <li className='p-4'>Home</li>
+        <li className='p-4'><a href="/">Home</a></li>
         <li className='p-4'>About</li>
         <li className='p-4'>Doctors</li>
         <li className='p-4'><a href="/jobsList">Jobs</a></li>
