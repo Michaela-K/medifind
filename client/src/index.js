@@ -5,9 +5,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import './index.css';
 import App from './App';
-import Navbar from "../components/Nav";
-import JobsList from "../components/JobsList";
-import NewJob from "../components/NewJob";
+import Navbar from "./components/Nav";
+import JobsList from "./components/JobsList";
+import NewJob from "./components/NewJob";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const JobsList = () => {
+  const [jobData, setJobData] = useState([]);
+    
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const res = await fetch("http://localhost:4000/api/jobs");
+          const data = await res.json();
+          setJobData(data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+  
+      fetchData();
+      console.log(jobData)
+    }, []); // Empty dependency array ensures the effect runs once after the initial render
+    
   return (
     <div className="flex flex-col h-[100vh] m-20">
       <div className="heading flex flex-col justify-center items-center">
