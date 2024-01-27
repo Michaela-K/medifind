@@ -16,8 +16,7 @@ import { useState, useEffect } from 'react'
     };
 
     fetchData();
-  }, []); // Empty dependency array ensures the effect runs once after the initial render
-  // console.log(jobData);
+  }, []);
 
   return jobData;
 };

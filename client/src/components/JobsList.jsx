@@ -1,9 +1,11 @@
-import React, { useEffect, useContext} from "react";
+import React, { useContext, useState} from "react";
 import { JobsContext } from "../context/index";
+// import Modal from "./Modal";
 
 const JobsList = () => {
   const { jobData } = useContext(JobsContext);
-  console.log(jobData)
+
+  // const [open, setOpen] = useState(false);
 
   return (
     <div className="flex flex-col h-[100vh] m-20">
@@ -126,7 +128,7 @@ const JobsList = () => {
 
       <div className="grid grid-cols-3">
         {jobData && jobData.map((job, index) => (
-          <div className="relative overflow-hidden h-[300px] w-[350px] rounded-lg bg-white text-left shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+          <div key={index} className="relative overflow-hidden h-[300px] w-[350px] rounded-lg bg-white text-left shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
             <div className="p-6 z-0">
               <h5 className="mb-2.5 text-xl font-medium leading-tight text-neutral-800">
                 {job.facility_name}
@@ -138,6 +140,7 @@ const JobsList = () => {
                 <p className="mb-8 text-base font-medium">${job.rate}/ hr</p>
                 <button
                   type="button"
+                  // onClick={() => setOpen(!open)}
                   className=" inline-block rounded bg-primary px-6 pb-2 mb-1 pt-2.5 mr-4 text-xs font-medium uppercase leading-normal shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700"
                 >
                   Details
@@ -157,6 +160,21 @@ const JobsList = () => {
           </div>
         ))}
       </div>
+      {/* {open ? <Modal>
+                <div className="flex flex-col gap-2 bg-white px-4 pb-4 rounded-lg">
+                    <h1 className="text-lg text-black mt-2 pr-48">Modal title</h1>
+                    <hr/>
+                    <div className="flex flex-col gap-2">
+                        <label htmlFor="email">Please enter your email address.</label>
+                        <input id="email" type="email" className="py-2 px-4 border border-gray-200 rounded-lg" placeholder="E.g: test@gmail.com"/>
+                    </div>
+                    <hr/>
+                    <div className="flex flex-row gap-2">
+                        <button onClick={() => setOpen(!open)} className="flex-1 py-2 px-4 bg-gray-500 hover:bg-gray-600 text-white font-bold text-lg rounded-full">Close</button>
+                        <button onClick={() => setOpen(!open)} className="flex-1 py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white font-bold text-lg rounded-full">Save</button>
+                    </div>
+                </div>
+            </Modal> : null} */}
     </div>
   );
 };
