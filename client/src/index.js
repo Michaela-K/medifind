@@ -8,10 +8,12 @@ import App from './App';
 import Navbar from "./components/Nav";
 import JobsList from "./components/JobsList";
 import NewJob from "./components/NewJob";
+import { JobsContextProvider } from '../src/context';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <JobsContextProvider>
   <React.StrictMode>
     <BrowserRouter>
       <Navbar/>
@@ -22,5 +24,6 @@ root.render(
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
+  </JobsContextProvider>
 );
 

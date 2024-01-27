@@ -1,23 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext} from "react";
+import { JobsContext } from "../context/index";
 
 const JobsList = () => {
-  const [jobData, setJobData] = useState([]);
-    
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const res = await fetch("http://localhost:4000/api/jobs");
-          const data = await res.json();
-          setJobData(data);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      };
-  
-      fetchData();
-      console.log(jobData)
-    }, []); // Empty dependency array ensures the effect runs once after the initial render
-    
+  const { jobData } = useContext(JobsContext);
+  console.log(jobData)
+
   return (
     <div className="flex flex-col h-[100vh] m-20">
       <div className="heading flex flex-col justify-center items-center">
@@ -137,35 +124,38 @@ const JobsList = () => {
         </div>
       </div>
 
-      <div className="relative overflow-hidden h-[350px] w-[350px] rounded-lg bg-white text-left shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
-        <div className="p-6 z-0">
-          <h5 className="mb-2.5 text-xl font-medium leading-tight text-neutral-800">
-            Toronto General Hospital
-          </h5>
-          <p className="mb-4 text-base">
-            Lorem Ipsum has been the industry's standard dummy text ever since
-            the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
-          </p>
-        </div>
-        <div className="lower-card absolute w-full bottom-0 px-6 z-10 bg-white">
-          <div className="job-btns">
-            <p className="mb-8 text-base font-medium">$52.00/ hr</p>
-            <button
-              type="button"
-              className=" inline-block rounded bg-primary px-6 pb-2 mb-1 pt-2.5 mr-4 text-xs font-medium uppercase leading-normal shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700"
-            >
-              Details
-            </button>
-            <button
-              type="button"
-              className="bg-[#7B84D3] text-white inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700"
-            >
-              Accept Job
-            </button>
+      <div className="grid grid-cols-3">
+        {jobData && jobData.map((job, index) => (
+          <div className="relative overflow-hidden h-[300px] w-[350px] rounded-lg bg-white text-left shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+            <div className="p-6 z-0">
+              <h5 className="mb-2.5 text-xl font-medium leading-tight text-neutral-800">
+                {job.facility_name}
+              </h5>
+              <p className="mb-4 text-base">{job.title}</p>
+            </div>
+            <div className="lower-card absolute w-full bottom-0 px-6 z-10 bg-white">
+              <div className="job-btns">
+                <p className="mb-8 text-base font-medium">${job.rate}/ hr</p>
+                <button
+                  type="button"
+                  className=" inline-block rounded bg-primary px-6 pb-2 mb-1 pt-2.5 mr-4 text-xs font-medium uppercase leading-normal shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700"
+                >
+                  Details
+                </button>
+                <button
+                  type="button"
+                  className="bg-[#7B84D3] text-white inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700"
+                >
+                  Accept Job
+                </button>
+              </div>
+              <div className="px-1 py-3 text-[#7775ad]">
+                {" "}
+                {job.date} 2 days ago
+              </div>
+            </div>
           </div>
-          <div className="px-1 py-3 text-[#7775ad]">2 days ago</div>
-        </div>
+        ))}
       </div>
     </div>
   );
