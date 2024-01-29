@@ -1,11 +1,42 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { JobsContext } from "../context/index";
 import Modal from "./Modal";
+import { FaCheckToSlot } from "react-icons/fa6";
 
 const JobsList = () => {
   const { jobData } = useContext(JobsContext);
 
   const [open, setOpen] = useState(false);
+  const [jobId, setJobId] = useState(0);
+  const [isJobFilled, setIsJobFilled] = useState(false);
+  const [jobStatus, setJobStatus] = useState({ is_filled: false });
+
+  const handleupdateJob = async (e) => {
+    e.preventDefault();
+    let id = Number(jobId);
+    console.log(id, jobStatus);
+    try {
+      const url = `http://localhost:4000/api/jobs/${id}`;
+      const method = "PUT";
+      const response = await fetch(url, {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(jobStatus),
+      });
+
+      if (response.ok) {
+        console.log("Job Status updated successfully");
+      } else {
+        // Handle error cases here
+        console.error("Error updating job status:", response.statusText);
+      }
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
+    window.location.reload();
+  };
 
   return (
     <div className="flex flex-col h-[100vh] m-20 min-w-[320px]">
@@ -132,11 +163,15 @@ const JobsList = () => {
             <div
               key={index}
               className="relative overflow-hidden h-[300px] max-w-[400px] rounded-lg bg-white text-left shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] "
-            >
-              <div className="p-6 z-0">
-                <h5 className="mb-2.5 text-xl font-medium leading-tight text-neutral-800">
-                  {job.facility_name}
-                </h5>
+            > 
+            {/* {job.id} */}
+              <div className="pt-1 px-6 z-0">
+                <div className="flex justify-between pt-5">
+                  <h5 className="mb-2.5 text-xl font-medium leading-tight text-neutral-800">
+                    {job.facility_name}
+                  </h5>
+                  {job.is_filled ? (<p className="flex justify-end text-green-500 text-4xl"><FaCheckToSlot /></p>) : null}
+                </div>
                 <p className="mb-4 text-base">{job.title}</p>
               </div>
               <div className="lower-card absolute w-full bottom-0 px-6 z-10 bg-white">
@@ -144,7 +179,10 @@ const JobsList = () => {
                   <p className="mb-8 text-base font-medium">${job.rate}/ hr</p>
                   <button
                     type="button"
-                    onClick={() => setOpen(!open)}
+                    onClick={() => {
+                      setOpen(!open);
+                      setJobId(job.id);
+                    }}
                     className=" inline-block rounded bg-primary px-6 pb-2 mb-1 pt-2.5 mr-4 text-xs font-medium uppercase leading-normal shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700"
                   >
                     Details
@@ -176,23 +214,47 @@ const JobsList = () => {
             </div>
             <p className="text-2xl text-black mt-1">Gender required: Female</p>
             <p className="text-black mt-1">
-              It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              It has survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was
+              popularised in the 1960s with the release of Letraset sheets
+              containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of
+              Lorem Ipsum.
             </p>
-
-            <div className="absolute w-full pr-16 py-8 bottom-0 flex flex-row gap-2">
-              <button
-                onClick={() => setOpen(!open)}
-                className="flex-1 py-2 px-4 bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold text-lg rounded-lg"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={() => setOpen(!open)}
-                className="flex-1 bg-[#7B84D3] text-white inline-block rounded-lg px-6 pb-2 pt-2.5 font-medium uppercase shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700"
-              >
-                Accept Job
-              </button>
-            </div>
+            {jobStatus.is_filled ? (
+              <div className="absolute w-full pr-16 py-8 bottom-0 flex flex-row gap-2">
+                 <button
+                  onClick={() => setOpen(!open)}
+                  className="flex-1 py-2 px-4 bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold text-lg rounded-lg"
+                >
+                  Close
+                </button>
+                <button className="flex-1 bg-[#9e2e2a] text-white inline-block rounded-lg px-6 pb-2 pt-2.5 font-medium uppercase shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700">
+                  Cancel This Shift
+                </button>
+              </div>
+            ) : (
+              <div className="absolute w-full pr-16 py-8 bottom-0 flex flex-row gap-2">
+                <button
+                  onClick={() => setOpen(!open)}
+                  className="flex-1 py-2 px-4 bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold text-lg rounded-lg"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={(e) => {
+                    setJobStatus((prevJobStatus) => ({
+                      ...prevJobStatus,
+                      is_filled: !prevJobStatus.is_filled
+                    }));
+                    handleupdateJob(e);
+                  }}
+                  className="flex-1 bg-[#7B84D3] text-white inline-block rounded-lg px-6 pb-2 pt-2.5 font-medium uppercase shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700"
+                >
+                  Accept Job
+                </button>
+              </div>
+            )}
           </div>
         </Modal>
       ) : null}
