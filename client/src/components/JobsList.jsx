@@ -13,8 +13,11 @@ const JobsList = () => {
 
   const [open, setOpen] = useState(false);
   const [jobId, setJobId] = useState(0);
-  const [isJobFilled, setIsJobFilled] = useState(false);
   const [jobStatus, setJobStatus] = useState({ is_filled: false });
+
+  const clickedJob = (jobId) => {
+  return jobData.find((job) => job.id === jobId);
+};
 
   const handleupdateJob = async (e) => {
     e.preventDefault();
@@ -40,7 +43,7 @@ const JobsList = () => {
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
@@ -188,7 +191,7 @@ const JobsList = () => {
                       setOpen(!open);
                       setJobId(job.id);
                     }}
-                    className="inline-block rounded bg-[#b1b5d9] w-[100%] px-6 pb-2 mb-1 pt-2.5 mr-4 text-xs font-medium uppercase leading-normal shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700"
+                    className="inline-block rounded bg-[#b6b9d8] w-[100%] px-6 pb-2 mb-1 pt-2.5 mr-4 text-xs font-medium uppercase leading-normal shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700"
                   >
                     Details
                   </button>
@@ -208,16 +211,17 @@ const JobsList = () => {
           ))}
       </div>
       {open ? (
+        <>
         <Modal>
           <div className="relative flex flex-col gap-2 bg-white p-8 rounded-lg h-[50vh] w-[30vw]">
-            <h1 className="text-5xl text-black mt-4 mb-1">Registered Nurse</h1>
+            <h1 className="text-5xl text-black mt-4 mb-1">{clickedJob(jobId).title}</h1>
             <hr />
-            <h1 className="text-3xl text-black mt-1">General Hospital</h1>
+            <h1 className="text-3xl text-black mt-1">{clickedJob(jobId).facility_name}</h1>
             <div className="flex w-full justify-between text-2xl font-medium">
-              <p className="text-1xl text-black mt-1">Full-Time</p>
-              <p className="text-1xl text-black mt-1">$52.00 / hr</p>
+              <p className="text-1xl text-black mt-1">{clickedJob(jobId).type_of_worker}</p>
+              <p className="text-1xl text-black mt-1">${clickedJob(jobId).rate}/ hr</p>
             </div>
-            <p className="text-2xl text-black mt-1">Gender required: Female</p>
+            <p className="text-2xl text-black mt-1">Gender required: {clickedJob(jobId).gender}</p>
             <p className="text-black mt-1">
               It has survived not only five centuries, but also the leap into
               electronic typesetting, remaining essentially unchanged. It was
@@ -226,7 +230,7 @@ const JobsList = () => {
               publishing software like Aldus PageMaker including versions of
               Lorem Ipsum.
             </p>
-            {jobStatus.is_filled ? (
+            {clickedJob(jobId).is_filled  ? (
               <div className="absolute w-full pr-16 py-8 bottom-0 flex flex-row gap-2">
                  <button
                   onClick={() => setOpen(!open)}
@@ -262,6 +266,7 @@ const JobsList = () => {
             )}
           </div>
         </Modal>
+        </>
       ) : null}
     </div>
   );
