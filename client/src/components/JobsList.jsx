@@ -9,7 +9,7 @@ import en from 'javascript-time-ago/locale/en.json'
 TimeAgo.addDefaultLocale(en)
 
 const JobsList = () => {
-  const { jobData } = useContext(JobsContext);
+  const { jobData, setJobData } = useContext(JobsContext);
 
   const [open, setOpen] = useState(false);
   const [jobId, setJobId] = useState(0);
@@ -35,6 +35,11 @@ const JobsList = () => {
       });
 
       if (response.ok) {
+        setJobData((prevJobData) =>
+        prevJobData.map((job) =>
+          job.id === id ? { ...job, is_filled: jobStatus.is_filled } : job
+        )
+      );
         console.log("Job Status updated successfully");
       } else {
         // Handle error cases here
@@ -45,6 +50,10 @@ const JobsList = () => {
     }
     window.location.reload();
   };
+
+  useEffect(() => {
+   
+  }, [jobData]);
 
   return (
     <div className="flex flex-col h-[100vh] m-20 min-w-[320px]">
@@ -221,7 +230,7 @@ const JobsList = () => {
               <p className="text-1xl text-black mt-1">{clickedJob(jobId).type_of_worker}</p>
               <p className="text-1xl text-black mt-1">${clickedJob(jobId).rate}/ hr</p>
             </div>
-            <p className="text-2xl text-black mt-1">Gender required: {clickedJob(jobId).gender}</p>
+            <p className="text-[1.285rem] text-black mt-1">Gender required: {clickedJob(jobId).gender}</p>
             <p className="text-black mt-1">
               It has survived not only five centuries, but also the leap into
               electronic typesetting, remaining essentially unchanged. It was
@@ -252,11 +261,11 @@ const JobsList = () => {
                 </button>
                 <button
                   onClick={(e) => {
+                    handleupdateJob(e);
                     setJobStatus((prevJobStatus) => ({
                       ...prevJobStatus,
                       is_filled: !prevJobStatus.is_filled
                     }));
-                    handleupdateJob(e);
                   }}
                   className="flex-1 bg-[#7B84D3] text-white inline-block rounded-lg px-6 pb-2 pt-2.5 font-medium uppercase shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700"
                 >

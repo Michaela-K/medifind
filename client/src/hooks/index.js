@@ -18,5 +18,5 @@ import { useState, useEffect } from 'react'
     fetchData();
   }, []);
 
-  return jobData;
+  return {jobData, setJobData};
 };
