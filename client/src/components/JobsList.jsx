@@ -14,13 +14,20 @@ const JobsList = () => {
   const [open, setOpen] = useState(false);
   const [jobId, setJobId] = useState(0);
   const [jobStatus, setJobStatus] = useState({ is_filled: false });
+  const [updateJob, setUpdateJob] = useState(false);
+
+  useEffect((e) => {
+    if(updateJob){
+      handleupdateJob();
+    }
+  }, [updateJob, jobId]);
 
   const clickedJob = (jobId) => {
     return jobData.find((job) => job.id === jobId);
   };
 
   const handleupdateJob = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     let id = Number(jobId);
     console.log(id, jobStatus);
     try {
@@ -37,10 +44,10 @@ const JobsList = () => {
       if (response.ok) {
         setJobData((prevJobData) =>
           prevJobData.map((job) =>
-            job.id === id ? { ...job, is_filled: jobStatus.is_filled } : job
+            job.id === id ? { ...job, is_filled: !prevJobData.is_filled } : job
           )
-        );
-        console.log("Job Status updated successfully");
+          );
+          console.log("Job Status updated successfully", jobStatus);
       } else {
         // Handle error cases here
         console.error("Error updating job status:", response.statusText);
@@ -48,16 +55,28 @@ const JobsList = () => {
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }
-    window.location.reload();
+    setUpdateJob(false)
+    window.location.reload(); 
   };
 
-  const cancelShift = (shift) => {
-    
-  };
+  // const cancelShift = async(e, shift) => {
+  //     e.preventDefault();
+  //     let id = shift.id;
+  //     try {
+  //       const url = `http://localhost:4000/api/jobs/${id}`;
+  //       const method = "PUT";
+  //       // await sendApiRequest(url, method);
+  //       console.log("Shift cancelled successfully");
+  //     } catch (error) {
+  //       console.error("There was a problem with the fetch operation:", error);
+  //     }
+  //     setOpen(!open);
+  //     window.location.reload();    
+  // };
 
-  const handleCancel = (shift) => {
-    cancelShift(shift);
-  };
+  // const handleCancel = (shift) => {
+  //   cancelShift(shift);
+  // };
 
   useEffect(() => {}, [jobData]);
 
@@ -272,7 +291,13 @@ const JobsList = () => {
                     Close
                   </button>
                   <button
-                    onClick={() => cancelShift(clickedJob)}
+                    onClick={() => {
+                      setJobStatus((prevJobStatus) => ({
+                        ...prevJobStatus,
+                        is_filled: false,
+                      }));
+                      setUpdateJob((prev) => !prev);
+                    }}
                     className="flex-1 bg-[#9e2e2a] text-white inline-block rounded-lg px-6 pb-2 pt-2.5 font-medium uppercase shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700"
                   >
                     Cancel My Shift
@@ -287,12 +312,12 @@ const JobsList = () => {
                     Cancel
                   </button>
                   <button
-                    onClick={(e) => {
-                      handleupdateJob(e);
+                    onClick={() => {
                       setJobStatus((prevJobStatus) => ({
                         ...prevJobStatus,
-                        is_filled: !prevJobStatus.is_filled,
+                        is_filled: true,
                       }));
+                      setUpdateJob((prev) => !prev);
                     }}
                     className="flex-1 bg-[#7B84D3] text-white inline-block rounded-lg px-6 pb-2 pt-2.5 font-medium uppercase shadow-[0_2px_7px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700"
                   >
