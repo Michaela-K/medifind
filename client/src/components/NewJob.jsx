@@ -105,20 +105,12 @@ const NewJob = () => {
             />
           </div>
 
-          <div className="mt-6">
-            <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-indigo-700 rounded-md hover:bg-indigo-600">
-              Login
+          <div className="mt-16">
+            <button type="submit" className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-indigo-700 rounded-md hover:bg-indigo-600">
+              Submit
             </button>
           </div>
         </form>
-
-        <p className="mt-16 text-lg font-light text-center text-gray-700">
-          {" "}
-          Already have an account?{" "}
-          <a href="#" className="font-medium text-indigo-600 hover:underline">
-            Sign in
-          </a>
-        </p>
       </div>
     </div>
   );
