@@ -57,7 +57,7 @@ const Hero = () => {
                 </div>
               </div>
               <h3 className="text-xl font-semibold leading-normal md:max-w-xs">
-                A complete UI kit for building your business
+              Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis.
               </h3>
             </div>
             <div className="w-full md:w-1/2 lg:w-1/4 p-8">
@@ -75,7 +75,7 @@ const Hero = () => {
                 </div>
               </div>
               <h3 className="text-xl font-semibold leading-normal md:max-w-xs">
-                A complete UI kit for building your business
+              Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis.
               </h3>
             </div>
             <div className="w-full md:w-1/2 lg:w-1/4 p-8">
@@ -92,7 +92,7 @@ const Hero = () => {
                 </div>
               </div>
               <h3 className="text-xl font-semibold leading-normal md:max-w-xs">
-                A complete UI kit for building your business
+              Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis.
               </h3>
             </div>
             <div className="w-full md:w-1/2 lg:w-1/4 p-8">
@@ -109,7 +109,7 @@ const Hero = () => {
                 </div>
               </div>
               <h3 className="text-xl font-semibold leading-normal md:max-w-xs">
-                A complete UI kit for building your business
+              Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices, orci vitae convallis mattis.
               </h3>
             </div>
           </div>
@@ -196,7 +196,7 @@ const Hero = () => {
   <div class="container px-4 mx-auto">
     <div class="flex flex-wrap -m-8">
       <div class="w-full md:w-1/3 p-8 bg-white rounded-lg">
-        <div class="md:max-w-xs mx-auto text-center">
+        <div class="md:max-w-xs mx-auto text-justify">
           <div class="flex justify-center mb-6 -m-1">
             <div class="w-auto p-1">
               <svg width="24" height="23" viewbox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -224,8 +224,8 @@ const Hero = () => {
               </svg>
             </div>
           </div>
-          <h3 class="mb-4 text-2xl font-semibold leading-snug">
-            <span>“An absolute revelation for templates.”</span>
+          <h3 class="mb-4 text-[1.28rem] font-semibold leading-snug">
+            <span>“Navigating through the job site was a breeze, with intuitive design and clear instructions at every step. The personalized job recommendations saved me hours of searching and truly matched my skills and career aspirations.”</span>
           </h3>
           <h3>
             <p class="text-gray-600 font-medium">Forbes Magazine</p>
@@ -233,7 +233,7 @@ const Hero = () => {
         </div>
       </div>
       <div class="w-full md:w-1/3 p-8  bg-white rounded-lg">
-        <div class="md:max-w-xs mx-auto text-center">
+        <div class="md:max-w-xs mx-auto text-justify">
           <div class="flex justify-center mb-6 -m-1">
             <div class="w-auto p-1">
               <svg width="24" height="23" viewbox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -261,8 +261,8 @@ const Hero = () => {
               </svg>
             </div>
           </div>
-          <h3 class="mb-4 text-2xl font-semibold leading-snug">
-            <span>“Exceptional Customer Service”</span>
+          <h3 class="mb-4 text-[1.28rem] font-semibold leading-snug">
+            <span>“I was thoroughly impressed by the quality of job listings on the site. Each posting provided detailed information about the role and company, and it was clear that the site only featured reputable organizations.”</span>
           </h3>
           <h3>
             <p class="text-gray-600 font-medium">Forbes Magazine</p>
@@ -270,7 +270,7 @@ const Hero = () => {
         </div>
       </div>
       <div class="w-full md:w-1/3 py-8 bg-white rounded-lg">
-        <div class="md:max-w-xs mx-auto text-center">
+        <div class="md:max-w-xs mx-auto text-justify">
           <div class="flex justify-center mb-6 -m-1">
             <div class="w-auto p-1">
               <svg width="24" height="23" viewbox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -298,8 +298,8 @@ const Hero = () => {
               </svg>
             </div>
           </div>
-          <h3 class="mb-4 text-2xl font-semibold leading-snug">
-            <span>“Flaro makes my design life easier”</span>
+          <h3 class="mb-4 text-[1.28rem] font-semibold leading-snug">
+            <span>“The resources and support offered by the site were outstanding. From the insightful articles and career advice to the prompt and helpful customer service, it felt like I had a personal career coach guiding me through my job search journey.”</span>
           </h3>
           <h3>
             <p class="text-gray-600 font-medium">Forbes Magazine</p>
