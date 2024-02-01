@@ -10,6 +10,8 @@ const Navbar = () => {
 
   return (
     <div className='flex justify-between items-center h-24 mx-auto px-20 text-black bg-[#ADDDEE] drop-shadow-md min-w-[320px]'>
+      <div className="container flex justify-between items-center h-24 mx-auto">
+
       <h1 className='w-full text-3xl font-bold text-[#24233E]'>MediFind</h1>
       <ul className='hidden md:flex items-center'>
         <li className='p-4'><a href="/">Home</a></li>
@@ -30,6 +32,7 @@ const Navbar = () => {
           <li className='p-6 flex justify-center items-center text-2xl border-b border-gray-100'>About</li>
           <li className='p-6 flex justify-center items-center text-2xl border-b border-gray-100'>Doctors</li>
       </ul>
+      </div>
     </div>
   );
 };
