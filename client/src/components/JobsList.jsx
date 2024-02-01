@@ -15,12 +15,19 @@ const JobsList = () => {
   const [jobId, setJobId] = useState(0);
   const [jobStatus, setJobStatus] = useState({ is_filled: false });
   const [updateJob, setUpdateJob] = useState(false);
+  //Search
+  const [selectedHospital, setSelectedHospital] = useState("");
+  const [selectedDate, setSelectedDate] = useState('');
+  const [searchResult, setSearchResult] = useState();
 
   useEffect((e) => {
-    if(updateJob){
-      handleupdateJob();
-    }
-  }, [updateJob, jobId]);
+      if (updateJob) {
+        handleupdateJob();
+      }
+      if (searchResult) {
+        setJobData(searchResult);
+      }
+  }, [updateJob, jobId, searchResult]);
 
   const clickedJob = (jobId) => {
     return jobData.find((job) => job.id === jobId);
@@ -46,8 +53,8 @@ const JobsList = () => {
           prevJobData.map((job) =>
             job.id === id ? { ...job, is_filled: !prevJobData.is_filled } : job
           )
-          );
-          console.log("Job Status updated successfully", jobStatus);
+        );
+        console.log("Job Status updated successfully", jobStatus);
       } else {
         // Handle error cases here
         console.error("Error updating job status:", response.statusText);
@@ -55,30 +62,30 @@ const JobsList = () => {
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }
-    setUpdateJob(false)
-    window.location.reload(); 
+    setUpdateJob(false);
+    window.location.reload();
   };
 
-  // const cancelShift = async(e, shift) => {
-  //     e.preventDefault();
-  //     let id = shift.id;
-  //     try {
-  //       const url = `http://localhost:4000/api/jobs/${id}`;
-  //       const method = "PUT";
-  //       // await sendApiRequest(url, method);
-  //       console.log("Shift cancelled successfully");
-  //     } catch (error) {
-  //       console.error("There was a problem with the fetch operation:", error);
-  //     }
-  //     setOpen(!open);
-  //     window.location.reload();    
-  // };
+  const handleHospitalChange = (event) => {
+    setSelectedHospital(event.target.value);
+  };
 
-  // const handleCancel = (shift) => {
-  //   cancelShift(shift);
-  // };
+  const fetchJobs = async () => {
+    try {
+        const queryParams = new URLSearchParams({
+            facility_name: selectedHospital,
+            date: selectedDate,
+        });
 
-  useEffect(() => {}, [jobData]);
+        const response = await fetch(`http://localhost:4000/api/jobs/search?${queryParams}`);
+        const data = await response.json();
+        setSearchResult(data)
+
+    } catch (error) {
+        console.error('Error fetching jobs:', error);
+        // Handle errors (e.g., show an error message to the user)
+    }
+};
 
   return (
     <div className="flex flex-col h-[100vh] m-20 min-w-[320px]">
@@ -92,93 +99,15 @@ const JobsList = () => {
                 <select
                   id="hospital"
                   className="mt-1 block w-full rounded-md border border-gray-200 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 "
+                  value={selectedHospital}
+                  onChange={handleHospitalChange}
                 >
-                  <option>Hospital</option>
-                  <option>Mount Sinai Hospital</option>
-                  <option>Sunnybrook Health Sciences Centre</option>
-                  <option>St. Michael's Hospital</option>
-                  <option>Toronto General Hospital</option>
-                  <option>Princess Margaret Cancer Centre</option>
-                  <option>The Hospital for Sick Children (SickKids)</option>
-                  <option>Toronto Western Hospital</option>
-                  <option>St. Joseph's Healthcare Hamilton</option>
-                  <option>Hamilton Health Sciences</option>
-                  <option>London Health Sciences Centre</option>
-                  <option>The Ottawa Hospital</option>
-                  <option>CHEO - Children's Hospital of Eastern Ontario</option>
-                  <option>Kingston Health Sciences Centre</option>
-                  <option>McMaster University Medical Centre</option>
-                  <option>Thunder Bay Regional Health Sciences Centre</option>
-                  <option>Windsor Regional Hospital</option>
-                  <option>Grand River Hospital</option>
-                  <option>
-                    Trillium Health Partners - Credit Valley Hospital
+                  <option value="" disabled>
+                    Hospital
                   </option>
-                  <option>
-                    Trillium Health Partners - Mississauga Hospital
-                  </option>
-                  <option>
-                    William Osler Health System - Brampton Civic Hospital
-                  </option>
-                </select>
-              </div>
-
-              <div className="flex flex-col">
-                <select
-                  id="location"
-                  className="mt-1 block w-full rounded-md border border-gray-200 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                >
-                  <option>Location</option>
-                  <option>Toronto</option>
-                  <option>Montreal</option>
-                  <option>Vancouver</option>
-                  <option>Calgary</option>
-                  <option>Edmonton</option>
-                  <option>Ottawa</option>
-                  <option>Winnipeg</option>
-                  <option>Quebec City</option>
-                  <option>Hamilton</option>
-                  <option>Kitchener</option>
-                  <option>London</option>
-                  <option>Victoria</option>
-                  <option>Halifax</option>
-                  <option>Oshawa</option>
-                  <option>Windsor</option>
-                  <option>Saskatoon</option>
-                  <option>Regina</option>
-                  <option>St. Catharines</option>
-                  <option>Barrie</option>
-                  <option>Kelowna</option>
-                  <option>Greater Sudbury</option>
-                  <option>Kingston</option>
-                  <option>Guelph</option>
-                  <option>Thunder Bay</option>
-                  <option>Waterloo</option>
-                  <option>Brantford</option>
-                  <option>Saint John</option>
-                  <option>Red Deer</option>
-                  <option>Lethbridge</option>
-                  <option>Kamloops</option>
-                  <option>Nanaimo</option>
-                  <option>Medicine Hat</option>
-                  <option>Fredericton</option>
-                  <option>Prince George</option>
-                  <option>Chilliwack</option>
-                  <option>Sault Ste. Marie</option>
-                  <option>Drummondville</option>
-                  <option>Kawartha Lakes</option>
-                  <option>Grande Prairie</option>
-                  <option>Wood Buffalo</option>
-                  <option>Brandon</option>
-                  <option>North Bay</option>
-                  <option>Norfolk County</option>
-                  <option>Shawinigan</option>
-                  <option>Penticton</option>
-                  <option>Vernon</option>
-                  <option>St. Thomas</option>
-                  <option>Courtenay</option>
-                  <option>Campbell River</option>
-                  <option>Moose Jaw</option>
+                  <option value="Aurelia Medical Group">Aurelia Medical Group</option>
+                  <option value="Veritas Health Systems">Veritas Health Systems</option>
+                  <option value="Elysium Medical Center">Elysium Medical Center</option>
                 </select>
               </div>
 
@@ -186,11 +115,14 @@ const JobsList = () => {
                 <input
                   type="date"
                   id="date"
+                  value={selectedDate}
+                  onChange={(e) => setSelectedDate(e.target.value)}
                   className="mt-1 block w-full rounded-md border border-gray-200 px-2 py-1.5 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 />
               </div>
               <div className="mt-1 grid w-full grid-cols-2 justify-end space-x-4 md:flex">
-                <button className="active:scale-95 rounded-lg bg-[#6c77d1] px-8 py-2 font-medium text-white outline-none focus:ring hover:opacity-90">
+                <button className="active:scale-95 rounded-lg bg-[#6c77d1] px-8 py-2 font-medium text-white outline-none focus:ring hover:opacity-90"
+                onClick={fetchJobs}>
                   Search
                 </button>
               </div>
