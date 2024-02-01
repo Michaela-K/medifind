@@ -88,7 +88,8 @@ const JobsList = () => {
 };
 
   return (
-    <div className="flex flex-col h-[100vh] m-20 min-w-[320px]">
+    <div className='flex justify-center'>
+    <div className="container h-[100vh] m-20 min-w-[320px]">
       <div className="heading flex flex-col justify-center items-center">
         <h1 className="text-6xl pb-8 text-[#24233E]">Jobs</h1>
         <div className="mb-16 max-w-screen-md">
@@ -261,6 +262,7 @@ const JobsList = () => {
           </Modal>
         </>
       ) : null}
+    </div>
     </div>
   );
 };

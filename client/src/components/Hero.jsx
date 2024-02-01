@@ -188,7 +188,7 @@ const Hero = () => {
   </div>
 </section>
 {/* TESTIMONIALS */}
-<section class="py-24 bg-[#effaff] overflow-hidden">
+<section class="py-24 overflow-hidden">
 <h2 className="text-center text-6xl md:text-7xl font-bold w-full">
          Trusted by thousands of happy Clients.
           </h2>
@@ -232,7 +232,7 @@ const Hero = () => {
           </h3>
         </div>
       </div>
-      <div class="w-full md:w-1/3 p-8">
+      <div class="w-full md:w-1/3 p-8  bg-white rounded-lg">
         <div class="md:max-w-xs mx-auto text-center">
           <div class="flex justify-center mb-6 -m-1">
             <div class="w-auto p-1">
@@ -269,7 +269,7 @@ const Hero = () => {
           </h3>
         </div>
       </div>
-      <div class="w-full md:w-1/3 p-8">
+      <div class="w-full md:w-1/3 py-8 bg-white rounded-lg">
         <div class="md:max-w-xs mx-auto text-center">
           <div class="flex justify-center mb-6 -m-1">
             <div class="w-auto p-1">
