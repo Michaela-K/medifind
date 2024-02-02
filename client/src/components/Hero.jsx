@@ -1,7 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import heroImg from "../images/heroImage.png";
+import support from "../images/support.svg"
 import { CSSTransition } from "react-transition-group";
 import "../index.css";
+
+import { RiCustomerService2Fill } from "react-icons/ri";
+import { FaUserDoctor } from "react-icons/fa6";
+import { SiEasyeda } from "react-icons/si";
+import { FaTwitter } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa6";
+
 
 const Hero = () => {
   const [showImage, setShowImage] = useState(false);
@@ -37,20 +46,20 @@ const Hero = () => {
                     <h2 className="mb-7 text-6xl md:text-7xl xl:text-10xl font-bold">
                       QUALITY ONLINE HEALTH CARE YOU CAN TRUST
                     </h2>
-                    <p className="mb-10 text-lg text-gray-900 font-medium">
+                    <p className="mb-10 text-xl text-gray-900 font-medium">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                     </p>
                     <div className="mb-6 md:inline-block">
                       <button
-                        className="py-4 px-6 text-white font-semibold border border-indigo-700 rounded-xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200"
+                        className="py-4 px-6 text-[1.3rem] text-white font-normal border border-indigo-700 rounded-xl bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200"
                         type="button"
                       >
                         Get Started Today
                       </button>
                     </div>
-                    <p className="mb-10 text-lg text-gray-800 font-small">
+                    <p className="text-lg text-gray-800 font-small">
                       No credit Card required
                     </p>
                   </div>
@@ -174,7 +183,7 @@ const Hero = () => {
             <div className="w-full md:w-1/2 p-8">
               <img
                 className="w-[80%] transform hover:translate-x-16 transition ease-in-out duration-1000 "
-                src={heroImg}
+                src={support}
                 alt=""
               />
             </div>
@@ -183,45 +192,15 @@ const Hero = () => {
                 <div className="flex flex-wrap -m-4">
                   <div className="w-auto p-4">
                     <div className="flex flex-wrap -m-2">
-                      <div className="w-auto p-2">
-                        <svg
-                          width="28"
-                          height="28"
-                          viewBox="0 0 28 28"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M4.66669 5.83329C4.66669 5.18896 5.18902 4.66663 5.83335 4.66663H22.1667C22.811 4.66663 23.3334 5.18896 23.3334 5.83329V8.16663C23.3334 8.81096 22.811 9.33329 22.1667 9.33329H5.83335C5.18902 9.33329 4.66669 8.81096 4.66669 8.16663V5.83329Z"
-                            stroke="#6366F1"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          ></path>
-                          <path
-                            d="M4.66669 15.1666C4.66669 14.5223 5.18902 14 5.83335 14H12.8334C13.4777 14 14 14.5223 14 15.1666V22.1666C14 22.811 13.4777 23.3333 12.8334 23.3333H5.83335C5.18902 23.3333 4.66669 22.811 4.66669 22.1666V15.1666Z"
-                            stroke="#6366F1"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          ></path>
-                          <path
-                            d="M18.6667 15.1666C18.6667 14.5223 19.189 14 19.8334 14H22.1667C22.811 14 23.3334 14.5223 23.3334 15.1666V22.1666C23.3334 22.811 22.811 23.3333 22.1667 23.3333H19.8334C19.189 23.3333 18.6667 22.811 18.6667 22.1666V15.1666Z"
-                            stroke="#6366F1"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          ></path>
-                        </svg>
-                      </div>
-                      <div className="flex-1 p-2">
+                      <div className="flex flex-1 flex-row p-2 gap-8">
+                      <RiCustomerService2Fill className="text-3xl text-indigo-600" />
                         <h3 className="text-lg font-semibold">
                           Customer Support
                         </h3>
                       </div>
                       <div className="w-full p-2">
                         <div className="pb-8 border-b">
-                          <p className="text-gray-600 font-medium leading-relaxed">
+                          <p className="text-gray-600 text-xl font-semibold leading-normal">
                             Aliquam erat volutpat. Integer malesuada turpis id
                             fringilla suscipit. Maecenas ultrices.
                           </p>
@@ -231,31 +210,15 @@ const Hero = () => {
                   </div>
                   <div className="w-auto p-4">
                     <div className="flex flex-wrap -m-2">
-                      <div className="w-auto p-2">
-                        <svg
-                          width="28"
-                          height="28"
-                          viewBox="0 0 28 28"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M5.83333 14.0001H22.1667M5.83333 14.0001C4.54467 14.0001 3.5 12.9554 3.5 11.6667V7.00008C3.5 5.71142 4.54467 4.66675 5.83333 4.66675H22.1667C23.4553 4.66675 24.5 5.71142 24.5 7.00008V11.6667C24.5 12.9554 23.4553 14.0001 22.1667 14.0001M5.83333 14.0001C4.54467 14.0001 3.5 15.0448 3.5 16.3334V21.0001C3.5 22.2887 4.54467 23.3334 5.83333 23.3334H22.1667C23.4553 23.3334 24.5 22.2887 24.5 21.0001V16.3334C24.5 15.0448 23.4553 14.0001 22.1667 14.0001M19.8333 9.33342H19.845M19.8333 18.6667H19.845"
-                            stroke="#4F46E5"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          ></path>
-                        </svg>
-                      </div>
-                      <div className="flex-1 p-2">
+                      <div className="flex flex-1 flex-row p-2 gap-8">
+                      <FaUserDoctor className="text-3xl text-indigo-600" />
                         <h3 className="text-lg font-semibold">
                           Vetted Doctors
                         </h3>
                       </div>
                       <div className="w-full p-2">
                         <div className="pb-8 border-b">
-                          <p className="text-gray-600 font-medium leading-relaxed">
+                          <p className="text-gray-600 text-xl font-semibold leading-normal">
                             Amet minim mollit non deserunt ullamco est sit
                             aliqua dolor do amet sint. Velit officia consequat
                             duis enim velit mollit. Exercitation veniam
@@ -267,30 +230,14 @@ const Hero = () => {
                   </div>
                   <div className="w-auto p-4">
                     <div className="flex flex-wrap -m-2">
-                      <div className="w-auto p-2">
-                        <svg
-                          width="28"
-                          height="28"
-                          viewBox="0 0 28 28"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M3.5 11.6666H24.5M8.16667 17.4999H9.33333M14 17.4999H15.1667M7 22.1666H21C22.933 22.1666 24.5 20.5996 24.5 18.6666V9.33325C24.5 7.40026 22.933 5.83325 21 5.83325H7C5.067 5.83325 3.5 7.40026 3.5 9.33325V18.6666C3.5 20.5996 5.067 22.1666 7 22.1666Z"
-                            stroke="#4F46E5"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          ></path>
-                        </svg>
-                      </div>
-                      <div className="flex-1 p-2">
+                      <div className="flex flex-1 flex-row p-2 gap-8">
+                      <SiEasyeda className="text-3xl text-indigo-600" />
                         <h3 className="text-lg font-semibold">
                           Quick and Easy to Use
                         </h3>
                       </div>
                       <div className="w-full p-2">
-                        <p className="text-gray-600 font-medium leading-relaxed">
+                        <p className="text-gray-600 text-xl font-semibold leading-normal">
                           Amet minim mollit non deserunt ullamco est sit aliqua
                           dolor do amet sint. Velit officia consequat duis enim
                           velit mollit. Exercitation veniam consequat.
@@ -307,7 +254,7 @@ const Hero = () => {
 
 
 
-      
+
       {/* TESTIMONIALS */}
       <section className="py-24 overflow-hidden">
         <h2 className="text-center text-6xl md:text-7xl font-bold w-full">
@@ -396,13 +343,13 @@ const Hero = () => {
                 <h3 className="mb-4 text-[1.28rem] font-semibold leading-snug">
                   <span>
                     “Navigating through the job site was a breeze, with
-                    intuitive design and clear instructions at every step. The
-                    personalized job recommendations saved me hours of searching
+                    intuitive design and clear instructions at every step. The ability to
+                    search saved me hours,
                     and truly matched my skills and career aspirations.”
                   </span>
                 </h3>
                 <h3>
-                  <p className="text-gray-600 font-medium">Forbes Magazine</p>
+                  <p className="text-gray-600 font-medium">Emily Smith</p>
                 </h3>
               </div>
             </div>
@@ -489,7 +436,7 @@ const Hero = () => {
                   </span>
                 </h3>
                 <h3>
-                  <p className="text-gray-600 font-medium">Forbes Magazine</p>
+                  <p className="text-gray-600 font-medium">Jack Harris</p>
                 </h3>
               </div>
             </div>
@@ -570,20 +517,49 @@ const Hero = () => {
                 <h3 className="mb-4 text-[1.28rem] font-semibold leading-snug">
                   <span>
                     “The resources and support offered by the site were
-                    outstanding. From the insightful articles and career advice
-                    to the prompt and helpful customer service, it felt like I
+                    outstanding. The prompt and helpful customer service felt like I
                     had a personal career coach guiding me through my job search
                     journey.”
                   </span>
                 </h3>
                 <h3>
-                  <p className="text-gray-600 font-medium">Forbes Magazine</p>
+                  <p className="text-gray-600 font-medium">Sophia Nguyen</p>
                 </h3>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+
+
+      {/* FOOTER SECTION */}
+      <div className="pt-24 pb-12 border-b border-gray-100 bg-[#ADDDEE]">
+  <div className="container mx-auto px-4">
+    <div className="flex items-center justify-between flex-wrap gap-8">
+      <a className='text-3xl font-bold text-[#24233E]' href="#"> MediFind
+      </a>
+      <ul className="flex items-center gap-6 flex-wrap">
+        <li className="text-[1.25rem] text-gray-800 hover:text-opacity-70 transition duration-200"><a href="#">Home</a></li>
+        <li className="text-[1.25rem] text-gray-800 hover:text-opacity-70 transition duration-200"><a href="#">About</a></li>
+        <li className="text-[1.25rem] text-gray-800 hover:text-opacity-70 transition duration-200"><a href="#">Doctors</a></li>
+        <li className="text-[1.25rem] text-gray-800 hover:text-opacity-70 transition duration-200"><a href="#">Jobs</a></li>
+        <li className="text-[1.25rem] text-gray-800 hover:text-opacity-70 transition duration-200"><a href="#">NewJob</a></li>
+      </ul>
+      <div className="flex items-center gap-6 flex-wrap">
+        <a className="text-black hover:text-gray-600 transition duration-200" href="#">
+         <FaTwitter  className="text-3xl text-indigo-600"/>
+        </a>
+        <a className="text-black hover:text-gray-600 transition duration-200" href="#">
+          <FaLinkedin  className="text-3xl text-indigo-600"/>
+        </a>
+        <a className="text-black hover:text-gray-600 transition duration-200" href="#">
+          <FaInstagram  className="text-3xl text-indigo-600"/>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
     </>
   );
 };

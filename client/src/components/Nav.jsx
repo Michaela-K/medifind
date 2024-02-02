@@ -14,14 +14,14 @@ const Navbar = () => {
 
       <h1 className='w-full text-3xl font-bold text-[#24233E]'>MediFind</h1>
       <ul className='hidden md:flex items-center'>
-        <li className='p-4'><a href="/">Home</a></li>
-        <li className='p-4'>About</li>
-        <li className='p-4'>Doctors</li>
-        <li className='p-4'><a href="/jobsList">Jobs</a></li>
-        <li className='p-4'><a href="/newjob">NewJob</a></li>
+        <li className='p-4  text-[1.25rem]'><a href="/">Home</a></li>
+        <li className='p-4  text-[1.25rem]'>About</li>
+        <li className='p-4  text-[1.25rem]'>Doctors</li>
+        <li className='p-4  text-[1.25rem]'><a href="/jobsList">Jobs</a></li>
+        <li className='p-4  text-[1.25rem]'><a href="/newjob">NewJob</a></li>
         <p className='flex w-16 justify-center'> | </p>
-        <button className='bg-transparent hover:bg-[#9098DB] hover:text-white py-2 px-4 mr-2 border border-[#5b588a] hover:border-transparent rounded'>Register</button>
-        <button className='bg-[#7B84D3] hover:bg-[#9098DB] text-white py-2.5 px-4 border-[#24233E] hover:border-transparent rounded'> LogIn </button>
+        <button className='text-[1.25rem] bg-transparent hover:bg-[#9098DB] hover:text-white py-2 px-4 mr-2 border border-[#5b588a] hover:border-transparent rounded'>Register</button>
+        <button className='text-[1.25rem] bg-[#7B84D3] hover:bg-[#9098DB] text-white py-2.5 px-4 border-[#24233E] hover:border-transparent rounded'> LogIn </button>
       </ul>
       <div onClick={handleNav} className='block md:hidden z-10'>
           {nav ? <AiOutlineClose size={30}/> : <AiOutlineMenu size={30} />}
