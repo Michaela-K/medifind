@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import heroImg from "../images/heroImage.png";
+import wavyline from "../images/wavyline.svg"
 import support from "../images/support.svg"
 import { CSSTransition } from "react-transition-group";
 import "../index.css";
 
 import { RiCustomerService2Fill } from "react-icons/ri";
+import { HiDocumentMagnifyingGlass } from "react-icons/hi2";
+import { FaUserNurse } from "react-icons/fa";
+import { FaCalendarPlus } from "react-icons/fa";
 import { FaUserDoctor } from "react-icons/fa6";
 import { SiEasyeda } from "react-icons/si";
 import { FaTwitter } from "react-icons/fa";
@@ -89,16 +93,20 @@ const Hero = () => {
       {/* HOW IT WORKS SECTION */}
       <section className="w-full pt-40 pb-32 bg-white overflow-hidden">
         <div className="w-full container px-4 mx-auto">
-          <h2 className="text-center text-6xl md:text-7xl font-bold w-full mb-24">
+          <h2 className="text-center text-6xl md:text-7xl font-bold w-full">
             How It Works
           </h2>
-          <div className="flex flex-wrap -m-8">
-            <div className="w-full md:w-1/2 lg:w-1/4 p-8">
+          <p className="text-center w-full mb-24 text-lg text-gray-900 font-medium mt-8">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad
+            minim veniam
+          </p>
+          <div className="flex items-center justify-between">
+            <div className="flex flex-col items-center w-full md:w-1/2 lg:w-1/4 p-4">
               <div className="flex flex-wrap items-center mb-7 -m-2">
-                <div className="w-auto p-2">
-                  <div className="relative w-14 h-14 text-2xl font-bold font-heading bg-indigo-100 rounded-full">
+                <div className="w-auto p-2 ">
+                  <div className="relative w-20 h-20 text-2xl font-bold font-heading bg-indigo-100 rounded-xl">
                     <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                      1
+                    <FaUserNurse  className="w-10 h-10" />
                     </span>
                   </div>
                 </div>
@@ -106,17 +114,24 @@ const Hero = () => {
                   <div className="w-full h-px bg-gray-200"></div>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold leading-normal md:max-w-xs">
+              <h3 className="text-center text-xl font-semibold leading-normal md:max-w-xs">
                 Aliquam erat volutpat. Integer malesuada turpis id fringilla
                 suscipit. Maecenas ultrices, orci vitae convallis mattis.
               </h3>
             </div>
-            <div className="w-full md:w-1/2 lg:w-1/4 p-8">
+            <div className="flex justify-center">
+              <img
+                className="w-[400px] h-[auto]"
+                src={wavyline}
+                alt=""
+              ></img>
+            </div>
+            <div className="flex flex-col items-center w-full md:w-1/2 lg:w-1/4 p-8">
               <div className="flex flex-wrap items-center mb-7 -m-2">
-                <div className="w-auto p-2">
-                  <div className="relative w-14 h-14 text-2xl text-white font-bold bg-indigo-600 rounded-full">
+                <div className="w-auto p-2 ">
+                  <div className="relative w-20 h-20 text-2xl font-bold font-heading bg-indigo-100 rounded-xl">
                     <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                      2
+                    <HiDocumentMagnifyingGlass  className="w-10 h-10" />
                     </span>
                   </div>
                 </div>
@@ -124,35 +139,26 @@ const Hero = () => {
                   <div className="w-full h-px bg-gray-200"></div>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold leading-normal md:max-w-xs">
+              <h3 className="text-center text-xl font-semibold leading-normal md:max-w-xs">
                 Aliquam erat volutpat. Integer malesuada turpis id fringilla
                 suscipit. Maecenas ultrices, orci vitae convallis mattis.
               </h3>
             </div>
-            <div className="w-full md:w-1/2 lg:w-1/4 p-8">
-              <div className="flex flex-wrap items-center mb-7 -m-2">
-                <div className="w-auto p-2">
-                  <div className="relative w-14 h-14 text-2xl font-bold font-heading bg-indigo-100 rounded-full">
-                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                      3
-                    </span>
-                  </div>
-                </div>
-                <div className="flex-1 p-2">
-                  <div className="w-full h-px bg-gray-200"></div>
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold leading-normal md:max-w-xs">
-                Aliquam erat volutpat. Integer malesuada turpis id fringilla
-                suscipit. Maecenas ultrices, orci vitae convallis mattis.
-              </h3>
+
+            <div className="flex justify-center">
+              <img
+                className="w-4300px] h-[auto]"
+                src={wavyline}
+                alt=""
+              ></img>
             </div>
-            <div className="w-full md:w-1/2 lg:w-1/4 p-8">
+           
+            <div className="flex flex-col items-center w-full md:w-1/2 lg:w-1/4 p-8">
               <div className="flex flex-wrap items-center mb-7 -m-2">
-                <div className="w-auto p-2">
-                  <div className="relative w-14 h-14 text-2xl font-bold font-heading bg-indigo-100 rounded-full">
+                <div className="w-auto p-2 ">
+                  <div className="relative w-20 h-20 text-2xl font-bold font-heading bg-indigo-100 rounded-xl">
                     <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                      4
+                    <FaCalendarPlus  className="w-10 h-10" />
                     </span>
                   </div>
                 </div>
@@ -160,7 +166,7 @@ const Hero = () => {
                   <div className="w-full h-px bg-gray-200"></div>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold leading-normal md:max-w-xs">
+              <h3 className="text-center text-xl font-semibold leading-normal md:max-w-xs">
                 Aliquam erat volutpat. Integer malesuada turpis id fringilla
                 suscipit. Maecenas ultrices, orci vitae convallis mattis.
               </h3>
