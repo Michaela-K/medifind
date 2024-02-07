@@ -90,6 +90,25 @@ const Hero = () => {
         </div>
       </section>
 
+      {/* BANNER */}
+      <section className="w-full bg-white flex justify-center items-center">
+        <div className="w-full bottom-[-316px] flex justify-center">
+          <div className="flex justify-between relative py-10 px-32 bg-indigo-600 overflow-hidden gap-32">
+            <div className="relative z-10 mr-16">
+              <h2 className="mb-4 text-3xl md:text-4xl text-white font-heading font-semibold">ADVANCE YOUR NURSING CAREER</h2>
+              <p className="mb-8 text-white font-heading font-medium">Elevate your nursing journey with InstaStaff. Seamlessly navigate job opportunities, manage your schedule effortlessly, and connect with care institutions seeking your expertise. Explore how InstaStaff can enhance your professional path and open doors to fulfilling opportunities.</p>
+              <div className="sm:max-w-max">
+                <a className="block py-5 px-7 w-full text-lg leading-3 text-white font-medium tracking-tighter font-heading text-center bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl" href="#">Add new report</a></div>
+            </div>
+            <div className="relative z-10">
+              <h2 className="mb-4 text-3xl md:text-4xl text-white font-heading font-semibold">OPTIMIZE YOUR STAFFING</h2>
+              <p className="mb-8 text-white font-heading font-medium">Transform your staffing process with InstaStaff. Streamline hiring, effortlessly manage shifts, and uncover a pool of qualified nursing professionals ready to bolster your team. Discover how InstaStaff can enhance the operations of your care institution.</p>
+              <div className="sm:max-w-max"><a className="block py-5 px-7 w-full text-lg leading-3 text-white font-medium tracking-tighter font-heading text-center bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl" href="#">Add new report</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* HOW IT WORKS SECTION */}
       <section className="w-full pt-40 pb-32 bg-white overflow-hidden">
         <div className="w-full container px-4 mx-auto">
